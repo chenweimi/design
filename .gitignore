@@ -28,4 +28,8 @@ HELP.md
 ### VS Code ###
 .vscode/
 
+### Custome ###
 /src/main/resources/application.properties
+.mvn
+mvnw
+.cmd
