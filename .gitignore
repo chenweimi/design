@@ -32,4 +32,4 @@ HELP.md
 /src/main/resources/application.properties
 .mvn
 mvnw
-.cmd
+*.cmd
