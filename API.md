@@ -17,7 +17,10 @@
 
 ### 获取产品信息
 
-- GET /product/{id}
+- GET /product/{systemId}
+   - systemId = 0 返回全部信息
+   - systemId = 指定ID 返回指定信息
+
 
 - return :
 
@@ -27,12 +30,12 @@
     "data" :
         [
             {
-                "id" : 1,
+                "systemId" : 1,
                 "name" : "筷子",
                 "count" : 1000
             },
             {
-                "id" : 2,
+                "systemId" : 2,
                 "name" : "碗",
                 "count" : 800
             }
@@ -65,7 +68,7 @@
 
 ### 删除产品
 
-- DELETE /product/{id}
+- DELETE /product/{systemId}
 
 - return :
 
@@ -85,7 +88,7 @@
 
 ```json
 {
-    "id" : 1,
+    "systemId" : 1,
     "name" : "筷子",
     "count" : 1000
 }
@@ -106,8 +109,10 @@
 
 ### 查询车辆
 
-- GET /car/{id}
-
+- GET /car/{systemId}
+   - systemId = 0 返回全部信息
+   - systemId = 指定ID 返回指定信息
+   
 - return :
     - status ： 0 可使用 1 配送中
 
@@ -117,13 +122,13 @@
     "data" :
         [
             {
-                "id" : 1,
+                "systemId" : 1,
                 "name" : "运输车A",
                 "number" : "黑A1231",
                 "status" : 0
             },
             {
-                "id" : 2,
+                "systemId" : 2,
                 "name" : "运输车B",
                 "number" : "黑A1232",
                 "status" : 1
@@ -157,7 +162,7 @@
 
 ### 删除汽车
 
-- DELETE /car/{id}
+- DELETE /car/{systemId}
 
 - return :
 
@@ -176,7 +181,7 @@
 
 ```json
 {
-    "id" : 1,
+    "systemId" : 1,
     "name" : "运输车A",
     "number" : "黑A1231",
     "status" : 0
@@ -198,8 +203,10 @@
 
 ### 查询员工
 
-- GET /employee/{id}
-
+- GET /employee/{systemId}
+   - systemId = 0 返回全部信息
+   - systemId = 指定ID 返回指定信息
+   
 - return :
 
 ```json
@@ -252,7 +259,7 @@
 
 ### 删除员工
 
-- DELETE /employee/{id}
+- DELETE /employee/{systemId}
 
 - return :
 
@@ -271,7 +278,7 @@
 
 ```json
 {
-    "id" : 1,
+    "systemId" : 1,
     "name" : "王五",
     "sex" : "男",
     "position" : "配送员",
@@ -294,7 +301,9 @@
 
 ### 查询客户
 
-- GET /client/{id}
+- GET /client/{systemId}
+   - systemId = 0 返回全部信息
+   - systemId = 指定ID 返回指定信息
 
 - return :
 
@@ -304,11 +313,11 @@
     "data" :
         [
             {
-                "id" : 1,
+                "systemId" : 1,
                 "name" : "张三"
             },
             {
-                "id" : 2,
+                "systemId" : 2,
                 "name" : "李四"
             }
         ]
@@ -323,7 +332,7 @@
 
 ```json
 {
-    "name" : "王五",
+    "name" : "王五"
 }
 ```
 - return :
@@ -339,7 +348,7 @@
 
 ### 删除客户
 
-- DELETE /client/{id}
+- DELETE /client/{systemId}
 
 - return :
 
@@ -358,7 +367,7 @@
 
 ```json
 {
-    "id" : 1,
+    "systemId" : 1,
     "name" : "王五"
 }
 ```
@@ -378,7 +387,9 @@
 
 ### 配送查询
 
-- GET /delivery/{id}
+- GET /delivery/{systemId}
+   - systemId = 0 返回全部信息
+   - systemId = 指定ID 返回指定信息
 
 - return :
 
@@ -388,7 +399,7 @@
     "data" :
         [
             {
-                "id" : 1,
+                "systemId" : 1,
                 "client" : "东北林业大学",
                 "thing" : [
                     {
@@ -409,7 +420,7 @@
                 "employee" : "张三"
             },
             {
-                "id" : 2,
+                "systemId" : 2,
                 "client" : "东北林业大学",
                 "thing" : [
                     {
@@ -475,7 +486,7 @@
 
 ```json
 {
-    "id" : 2,
+    "systemId" : 2,
     "client" : "东北林业大学",
     "thing" : [
         {
@@ -506,7 +517,7 @@
 
 ### 删除配送
 
-- DELETE /delivery/{id}
+- DELETE /delivery/{systemId}
 
 - return :
 
@@ -523,7 +534,9 @@
 
 ### 查询财务
 
-- GET　/finance/{id}
+- GET　/finance/{systemId}
+   - systemId = 0 返回全部信息
+   - systemId = 指定ID 返回指定信息
 
 - return :
 
@@ -533,12 +546,12 @@
     "data" :
         [
             {
-                "id" : 1,
+                "systemId" : 1,
                 "total" : 1000,
                 "current" : 800
             },
             {
-                "id" : 2,
+                "systemId" : 2,
                 "total" : 1000,
                 "current" : 800
             }
@@ -552,7 +565,7 @@
 
 ```json
 {
-    "id" : 1,
+    "systemId" : 1,
     "total" : 1000,
     "current" : 800
 }
