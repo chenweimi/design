@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Map<String, Object>> getProduct(int systemId) throws MyException {
         List<Map<String, Object>> rtv = new ArrayList<>();
         List<Product> products = productMapper.selectByCondition(systemId);
-        if (products != null || products.size() == 0) {
+        if (products.size() == 0) {
             throw new MyException("查询失败");
         } else {
             for (Product product : products) {
