@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
         } else {
             for (Product product : products) {
                 Map<String,Object> map = new HashMap<>(3);
-               map.put("id",product.getSystemId());
+               map.put("systemId",product.getSystemId());
                map.put("name",product.getName());
                map.put("count",product.getCount());
                rtv.add(map);
