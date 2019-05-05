@@ -4,7 +4,6 @@ import net.sanlao.design.common.MyException;
 import net.sanlao.design.core.mapper.ProductMapper;
 import net.sanlao.design.core.model.Product;
 import net.sanlao.design.service.ProductService;
-import org.apache.tomcat.jni.Proc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
