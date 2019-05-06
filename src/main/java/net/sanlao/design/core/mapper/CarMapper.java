@@ -36,7 +36,7 @@ public interface CarMapper {
      * @param car
      * @return
      */
-    @UpdateProvider(type = CarProvider.class, method = "setProduct")
+    @UpdateProvider(type = CarProvider.class, method = "setCar")
     int updateBySystemId(Car car);
 
     @Delete("DELETE FROM car WHERE c_id=#{systemId}")

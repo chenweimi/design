@@ -61,7 +61,7 @@ public class CarServiceImpl implements CarService {
     public boolean updateCar(Car car) throws MyException {
         int i =  carMapper.updateBySystemId(car);
         if (i == 0) {
-            throw new MyException("插入失败");
+            throw new MyException("修改失败");
         }
         return true;
     }

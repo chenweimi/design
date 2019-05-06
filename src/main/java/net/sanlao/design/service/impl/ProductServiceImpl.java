@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
     public boolean updateProduct(Product product) throws MyException {
         int i =  productMapper.updateBySystemId(product);
         if (i == 0) {
-            throw new MyException("插入失败");
+            throw new MyException("修改失败");
         }
         return true;
 

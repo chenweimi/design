@@ -10,7 +10,7 @@ import org.apache.ibatis.jdbc.SQL;
  */
 public class EmployeeProvider {
 
-    public String setProduct(Employee employee) {
+    public String setEmployee(Employee employee) {
         return new SQL() {
             {
                 UPDATE("employee");

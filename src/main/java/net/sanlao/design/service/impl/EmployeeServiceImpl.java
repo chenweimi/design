@@ -60,7 +60,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean updateEmployee(Employee employee) throws MyException {
         int i =  employeeMapper.updateBySystemId(employee);
         if (i == 0) {
-            throw new MyException("插入失败");
+            throw new MyException("修改失败");
         }
         return true;
     }

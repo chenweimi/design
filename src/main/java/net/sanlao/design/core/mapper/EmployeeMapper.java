@@ -1,6 +1,5 @@
 package net.sanlao.design.core.mapper;
 
-import net.sanlao.design.core.mapper.provider.CarProvider;
 import net.sanlao.design.core.mapper.provider.EmployeeProvider;
 import net.sanlao.design.core.model.Employee;
 import org.apache.ibatis.annotations.*;
@@ -30,7 +29,7 @@ public interface EmployeeMapper {
      * @param employee
      * @return
      */
-    @Insert("INSERT INTO employee(e_id,e_name,e_sex,e_position) VALUES(#{systemId},#{name},#{sex},#{position})")
+    @Insert("INSERT INTO employee(e_id,e_name,e_sex,e_position,e_comment) VALUES(#{systemId},#{name},#{sex},#{position},#{comment})")
     @Options(useGeneratedKeys = true, keyProperty = "systemId")
     int insert(Employee employee);
 
@@ -39,7 +38,7 @@ public interface EmployeeMapper {
      * @param employee
      * @return
      */
-    @UpdateProvider(type = EmployeeProvider.class, method = "setProduct")
+    @UpdateProvider(type = EmployeeProvider.class, method = "setEmployee")
     int updateBySystemId(Employee employee);
 
     @Delete("DELETE FROM employee WHERE e_id=#{systemId}")

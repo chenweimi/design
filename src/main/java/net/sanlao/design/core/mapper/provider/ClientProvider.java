@@ -1,6 +1,6 @@
 package net.sanlao.design.core.mapper.provider;
 
-import net.sanlao.design.core.model.Car;
+import net.sanlao.design.core.model.Client;
 import org.apache.ibatis.jdbc.SQL;
 
 /**
@@ -8,19 +8,13 @@ import org.apache.ibatis.jdbc.SQL;
  * @date : 2019/05/05
  * @since : Java 11
  */
-public class CarProvider {
-    public String setCar(Car car) {
+public class ClientProvider {
+    public String setClient(Client client) {
         return new SQL() {
             {
-                UPDATE("car");
-                if(car.getName() != null) {
+                UPDATE("client");
+                if(client.getName() != null) {
                     SET("c_name=#{name}");
-                }
-                if(car.getNumber() != null) {
-                    SET("c_number=#{number}");
-                }
-                if(car.getStatus() != null) {
-                    SET("c_status=#{status}");
                 }
                 WHERE("c_id=#{systemId}");
 
@@ -31,8 +25,8 @@ public class CarProvider {
     public String selectByCondition(Integer systemId) {
         return new SQL() {
             {
-                SELECT("c_id AS systemId,c_name AS name,c_number AS number,c_status AS status");
-                FROM("car");
+                SELECT("c_id AS systemId,c_name AS name");
+                FROM("client");
                 if (systemId != 0) {
                     WHERE("c_id=#{systemId}");
                 }
