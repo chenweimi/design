@@ -13,7 +13,10 @@ import net.sanlao.design.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author : Jimi
@@ -71,5 +74,80 @@ public class DeliveryServiceImpl implements DeliveryService {
 
         return true;
 
+    }
+
+    @Override
+    public List<Map<String, Object>> getDelivery(int systemId) throws MyException {
+
+        SimpleDateFormat formatter;
+        formatter = new SimpleDateFormat ("yyyy-MM-dd");
+
+
+        List<Map<String, Object>> rtv = new ArrayList<>();
+        List<Delivery> deliveries = deliveryMapper.selectByCondition(systemId);
+        if (deliveries.size() == 0) {
+            throw new MyException("查询失败");
+        } else {
+            for (Delivery delivery : deliveries) {
+                Map<String,Object> map = new HashMap<>(8);
+                map.put("systemId",delivery.getSystemId());
+                map.put("clientName",delivery.getClientName());
+                map.put("things",JsonUtil.getObjFromJson(delivery.getThings(), Product[].class));
+                map.put("start", formatter.format(delivery.getStart()));
+                map.put("end",formatter.format(delivery.getEnd()));
+                map.put("status",delivery.getStatus());
+                map.put("carNumber",delivery.getCarNumber());
+                map.put("employeeName",delivery.getEmployeeName());
+
+
+                List<Finance> finances = financeMapper.selectByCondition(delivery.getSystemId());
+                map.put("money",finances.get(0).getTotal());
+
+                rtv.add(map);
+            }
+        }
+
+
+        return rtv;
+    }
+
+    @Override
+    public boolean updateDelivery(DeliveryVo deliveryVo) throws MyException {
+
+        Delivery delivery = new Delivery();
+        delivery.setSystemId(deliveryVo.getSystemId());
+        delivery.setClientName(deliveryVo.getClientName());
+        delivery.setStart(deliveryVo.getStart());
+        delivery.setEnd(deliveryVo.getEnd());
+        delivery.setThings(JsonUtil.getJsonString(deliveryVo.getThings()));
+        delivery.setStatus(deliveryVo.getStatus());
+        delivery.setCarNumber(deliveryVo.getCarNumber());
+        delivery.setEmployeeName(deliveryVo.getEmployeeName());
+
+        Finance finance = new Finance();
+        finance.setSystemId(deliveryVo.getSystemId());
+        finance.setTotal(deliveryVo.getMoney());
+
+        int i = deliveryMapper.updateBySystemId(delivery);
+        int j = financeMapper.updateBySystemId(finance);
+
+        if(i == 0 || j == 0) {
+            throw new MyException("修改失败");
+        }
+
+        return true;
+
+    }
+
+    @Override
+    public boolean deleteDelivery(int systemId) throws MyException {
+        int i = deliveryMapper.deleteBySystemId(systemId);
+        int j = financeMapper.deleteBySystemId(systemId);
+
+        if(i == 0 || j == 0) {
+            throw new MyException("删除失败");
+        }
+
+        return true;
     }
 }

@@ -400,8 +400,8 @@
         [
             {
                 "systemId" : 1,
-                "client" : "东北林业大学",
-                "thing" : [
+                "clientName" : "东北林业大学",
+                "things" : [
                     {
                     "id" : 1,
                     "name" : "筷子",
@@ -416,27 +416,31 @@
                 "start" : "2019-10-10",
                 "end" : "2019-10-11",
                 "status" : 0,
-                "car" : "运输车A",
-                "employee" : "张三"
+                "carNumber" : "运输车A",
+                "employeeName" : "张三",
+                "money" : 100
             },
             {
-                "systemId" : 2,
-                "client" : "东北林业大学",
-                "thing" : [
-                    {
-                    "name" : "筷子",
-                    "count" : 100
-                    },
-                    {
-                    "name" : "杯子",
-                    "count" : 200
-                    }
-                ],
-                "start" : "2019-10-10",
-                "end" : "2019-10-11",
-                "status" : 0,
-                "car" : "运输车A",
-                "employee" : "张三"
+               "systemId" : 2,
+               "clientName" : "东北林业大学",
+               "things" : [
+                   {
+                   "id" : 1,
+                   "name" : "筷子",
+                   "count" : 100
+                   },
+                   {
+                   "id" : 2,
+                   "name" : "杯子",
+                   "count" : 200
+                   }
+               ],
+               "start" : "2019-10-10",
+               "end" : "2019-10-11",
+               "status" : 0,
+               "carNumber" : "运输车A",
+               "employeeName" : "张三",
+               "money" : 100
             }
         ]
 }

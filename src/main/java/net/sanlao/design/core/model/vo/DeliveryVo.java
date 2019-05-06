@@ -17,6 +17,9 @@ public class DeliveryVo {
     private Date start;
     private Date end;
     private Integer money;
+    private Integer status;
+    private String carNumber;
+    private String employeeName;
 
     public Integer getSystemId() {
         return SystemId;
@@ -64,5 +67,29 @@ public class DeliveryVo {
 
     public void setMoney(Integer money) {
         this.money = money;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 }

@@ -1,7 +1,11 @@
 package net.sanlao.design.service;
 
 import net.sanlao.design.common.MyException;
+import net.sanlao.design.core.model.Finance;
 import net.sanlao.design.core.model.vo.DeliveryVo;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Jimi
@@ -10,11 +14,27 @@ import net.sanlao.design.core.model.vo.DeliveryVo;
  */
 public interface FinanceService {
 
+
     /**
-     * 插入
-     * @param deliveryVo
+     * 查询
+     *
      * @return
-     * @throws MyException
      */
-    boolean postFinance(DeliveryVo deliveryVo) throws MyException;
+    List<Map<String, Object>> getFinance(int systemId) throws MyException;
+
+    /**
+     * 修改
+     * @param finance
+     * @return
+     */
+    boolean updateFinance(Finance finance) throws MyException;
+
+
+    /**
+     * 查询统计
+     *
+     * @return
+     */
+    Map<String,Object> getStats() throws MyException;
+
 }
