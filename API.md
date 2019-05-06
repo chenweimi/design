@@ -450,22 +450,22 @@
 
 ```json
  {
-    "id" : 1,
-    "client" : "东北林业大学",
-    "thing" : [
+    "clientName" : "东北林业大学",
+    "things" : [
         {
-        "id" : 1,
+        "systemId" : 1,
         "name" : "筷子",
         "count" : 100
         },
         {
-        "id" : 2,
+        "systemId" : 2,
         "name" : "杯子",
         "count" : 200
         }
     ],
     "start" : "2019-10-10",
-    "end" : "2019-10-11"
+    "end" : "2019-10-11",
+    "money" : 100
 }
 ```
 

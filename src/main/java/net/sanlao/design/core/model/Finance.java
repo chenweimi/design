@@ -7,8 +7,8 @@ package net.sanlao.design.core.model;
  */
 public class Finance {
     private Integer systemId;
-    private String total;
-    private String current;
+    private Integer total;
+    private Integer current;
 
     public Integer getSystemId() {
         return systemId;
@@ -18,19 +18,19 @@ public class Finance {
         this.systemId = systemId;
     }
 
-    public String getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 
-    public String getCurrent() {
+    public Integer getCurrent() {
         return current;
     }
 
-    public void setCurrent(String current) {
+    public void setCurrent(Integer current) {
         this.current = current;
     }
 }

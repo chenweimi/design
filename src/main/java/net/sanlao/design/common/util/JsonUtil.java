@@ -44,7 +44,7 @@ public class JsonUtil {
         return rtv;
     }
 
-    private static <T> T getObjFromJson(String jsonString, Class<T> valueType) {
+    public static <T> T getObjFromJson(String jsonString, Class<T> valueType) {
         T rtv = null;
         try {
             rtv = objectMapper.readValue(jsonString, valueType);

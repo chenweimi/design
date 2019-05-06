@@ -1,23 +1,22 @@
-package net.sanlao.design.core.model;
+package net.sanlao.design.core.model.vo;
+
+import net.sanlao.design.core.model.Product;
 
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author : Jimi
- * @date : 2019/05/04
+ * @date : 2019/05/06
  * @since : Java 11
  */
-public class Delivery {
-
+public class DeliveryVo {
     private Integer SystemId;
     private String clientName;
-    private String things;
+    private Product[] things;
     private Date start;
     private Date end;
-    private Integer status;
-    private String carNumber;
-    private String employeeName;
+    private Integer money;
 
     public Integer getSystemId() {
         return SystemId;
@@ -35,11 +34,11 @@ public class Delivery {
         this.clientName = clientName;
     }
 
-    public String getThings() {
+    public Product[] getThings() {
         return things;
     }
 
-    public void setThings(String things) {
+    public void setThings(Product[] things) {
         this.things = things;
     }
 
@@ -59,27 +58,11 @@ public class Delivery {
         this.end = end;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getMoney() {
+        return money;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getCarNumber() {
-        return carNumber;
-    }
-
-    public void setCarNumber(String carNumber) {
-        this.carNumber = carNumber;
-    }
-
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public void setMoney(Integer money) {
+        this.money = money;
     }
 }
