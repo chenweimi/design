@@ -417,7 +417,7 @@
                 "end" : "2019-10-11",
                 "status" : 0,
                 "carNumber" : "运输车A",
-                "employeeName" : "张三",
+                "eId" : "张三",
                 "money" : 100
             },
             {
@@ -439,7 +439,7 @@
                "end" : "2019-10-11",
                "status" : 0,
                "carNumber" : "运输车A",
-               "employeeName" : "张三",
+               "eId" : "张三",
                "money" : 100
             }
         ]
@@ -537,7 +537,7 @@
 
 ### 根据配送员筛选订单
 
-- GET /delivery?e_id=XX
+- GET /delivery?eId=XX
 
 - return : 
 
@@ -565,7 +565,7 @@
                 "end" : "2019-10-11",
                 "status" : 0,
                 "carNumber" : "运输车A",
-                "employeeName" : "张三",
+                "eId" : "张三",
                 "money" : 100
             },
             {
@@ -587,7 +587,7 @@
                "end" : "2019-10-11",
                "status" : 0,
                "carNumber" : "运输车A",
-               "employeeName" : "张三",
+               "eId" : "张三",
                "money" : 100
             }
         ]
