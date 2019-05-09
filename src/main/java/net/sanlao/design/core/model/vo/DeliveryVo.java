@@ -12,13 +12,13 @@ import java.util.List;
  */
 public class DeliveryVo {
     private Integer SystemId;
-    private String clientName;
+    private Integer clientId;
     private Product[] things;
     private Date start;
     private Date end;
     private Integer money;
     private Integer status;
-    private String carNumber;
+    private Integer carId;
     private Integer eId;
 
     public Integer getSystemId() {
@@ -29,13 +29,6 @@ public class DeliveryVo {
         SystemId = systemId;
     }
 
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
 
     public Product[] getThings() {
         return things;
@@ -77,12 +70,20 @@ public class DeliveryVo {
         this.status = status;
     }
 
-    public String getCarNumber() {
-        return carNumber;
+    public Integer getClientId() {
+        return clientId;
     }
 
-    public void setCarNumber(String carNumber) {
-        this.carNumber = carNumber;
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
+    }
+
+    public Integer getCarId() {
+        return carId;
+    }
+
+    public void setCarId(Integer carId) {
+        this.carId = carId;
     }
 
     public Integer geteId() {

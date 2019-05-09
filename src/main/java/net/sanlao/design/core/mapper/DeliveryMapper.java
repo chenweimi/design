@@ -24,7 +24,7 @@ public interface DeliveryMapper {
      * @param delivery
      * @return
      */
-    @Insert("INSERT INTO delivery(d_id,client_name,d_thing,d_start,d_end) VALUES(#{systemId},#{clientName},#{things},#{start},#{end})")
+    @Insert("INSERT INTO delivery(d_id,client_id,d_thing,d_start,d_end) VALUES(#{systemId},#{clientId},#{things},#{start},#{end})")
     @Options(useGeneratedKeys = true, keyProperty = "systemId")
     int insert(Delivery delivery);
 

@@ -3,9 +3,11 @@ package net.sanlao.design.service.impl;
 import net.sanlao.design.common.MyException;
 import net.sanlao.design.common.util.JsonUtil;
 import net.sanlao.design.core.mapper.DeliveryMapper;
+import net.sanlao.design.core.mapper.EmployeeMapper;
 import net.sanlao.design.core.mapper.FinanceMapper;
 import net.sanlao.design.core.mapper.ProductMapper;
 import net.sanlao.design.core.model.Delivery;
+import net.sanlao.design.core.model.Employee;
 import net.sanlao.design.core.model.Finance;
 import net.sanlao.design.core.model.Product;
 import net.sanlao.design.core.model.vo.DeliveryVo;
@@ -30,12 +32,14 @@ public class DeliveryServiceImpl implements DeliveryService {
     private final DeliveryMapper deliveryMapper;
     private final FinanceMapper financeMapper;
     private final ProductMapper productMapper;
+    private final EmployeeMapper employeeMapper;
 
     @Autowired
-    public DeliveryServiceImpl(DeliveryMapper deliveryMapper,FinanceMapper financeMapper,ProductMapper productMapper) {
+    public DeliveryServiceImpl(DeliveryMapper deliveryMapper, FinanceMapper financeMapper, ProductMapper productMapper, EmployeeMapper employeeMapper) {
         this.deliveryMapper = deliveryMapper;
         this.financeMapper = financeMapper;
         this.productMapper = productMapper;
+        this.employeeMapper = employeeMapper;
     }
 
     @Override
@@ -56,7 +60,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
         Delivery delivery = new Delivery();
         delivery.setSystemId(deliveryVo.getSystemId());
-        delivery.setClientName(deliveryVo.getClientName());
+        delivery.setClientId(deliveryVo.getClientId());
         delivery.setStart(deliveryVo.getStart());
         delivery.setEnd(deliveryVo.getEnd());
         delivery.setThings(JsonUtil.getJsonString(deliveryVo.getThings()));
@@ -82,6 +86,8 @@ public class DeliveryServiceImpl implements DeliveryService {
         formatter = new SimpleDateFormat ("yyyy-MM-dd");
 
 
+
+
         List<Map<String, Object>> rtv = new ArrayList<>();
         List<Delivery> deliveries = deliveryMapper.selectByCondition(systemId);
         if (deliveries.size() == 0) {
@@ -90,12 +96,12 @@ public class DeliveryServiceImpl implements DeliveryService {
             for (Delivery delivery : deliveries) {
                 Map<String,Object> map = new HashMap<>(8);
                 map.put("systemId",delivery.getSystemId());
-                map.put("clientName",delivery.getClientName());
+                map.put("clientId",delivery.getClientId());
                 map.put("things",JsonUtil.getObjFromJson(delivery.getThings(), Product[].class));
                 map.put("start", formatter.format(delivery.getStart()));
                 map.put("end",formatter.format(delivery.getEnd()));
                 map.put("status",delivery.getStatus());
-                map.put("carNumber",delivery.getCarNumber());
+                map.put("carId",delivery.getCarId());
                 map.put("eId",delivery.geteId());
 
 
@@ -115,12 +121,12 @@ public class DeliveryServiceImpl implements DeliveryService {
 
         Delivery delivery = new Delivery();
         delivery.setSystemId(deliveryVo.getSystemId());
-        delivery.setClientName(deliveryVo.getClientName());
+        delivery.setClientId(deliveryVo.getClientId());
         delivery.setStart(deliveryVo.getStart());
         delivery.setEnd(deliveryVo.getEnd());
         delivery.setThings(JsonUtil.getJsonString(deliveryVo.getThings()));
         delivery.setStatus(deliveryVo.getStatus());
-        delivery.setCarNumber(deliveryVo.getCarNumber());
+        delivery.setCarId(deliveryVo.getCarId());
         delivery.seteId(deliveryVo.geteId());
 
         Finance finance = new Finance();
@@ -164,12 +170,12 @@ public class DeliveryServiceImpl implements DeliveryService {
             for (Delivery delivery : deliveries) {
                 Map<String,Object> map = new HashMap<>(8);
                 map.put("systemId",delivery.getSystemId());
-                map.put("clientName",delivery.getClientName());
+                map.put("clientId",delivery.getClientId());
                 map.put("things",JsonUtil.getObjFromJson(delivery.getThings(), Product[].class));
                 map.put("start", formatter.format(delivery.getStart()));
                 map.put("end",formatter.format(delivery.getEnd()));
                 map.put("status",delivery.getStatus());
-                map.put("carNumber",delivery.getCarNumber());
+                map.put("carId",delivery.getCarId());
                 map.put("eId",delivery.geteId());
 
 
