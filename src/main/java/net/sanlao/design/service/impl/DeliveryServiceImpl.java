@@ -13,10 +13,11 @@ import net.sanlao.design.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Jimi
@@ -39,8 +40,6 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public boolean postDelivery(DeliveryVo deliveryVo) throws MyException {
-
-        //List<Product> things = JsonUtil.getObjFromJson(deliveryVo.getThings(),List.class);
 
         Product[] things = deliveryVo.getThings();
 
@@ -97,7 +96,7 @@ public class DeliveryServiceImpl implements DeliveryService {
                 map.put("end",formatter.format(delivery.getEnd()));
                 map.put("status",delivery.getStatus());
                 map.put("carNumber",delivery.getCarNumber());
-                map.put("employeeName",delivery.getEmployeeName());
+                map.put("eId",delivery.geteId());
 
 
                 List<Finance> finances = financeMapper.selectByCondition(delivery.getSystemId());
@@ -122,7 +121,7 @@ public class DeliveryServiceImpl implements DeliveryService {
         delivery.setThings(JsonUtil.getJsonString(deliveryVo.getThings()));
         delivery.setStatus(deliveryVo.getStatus());
         delivery.setCarNumber(deliveryVo.getCarNumber());
-        delivery.setEmployeeName(deliveryVo.getEmployeeName());
+        delivery.seteId(deliveryVo.geteId());
 
         Finance finance = new Finance();
         finance.setSystemId(deliveryVo.getSystemId());
@@ -149,5 +148,39 @@ public class DeliveryServiceImpl implements DeliveryService {
         }
 
         return true;
+    }
+
+    @Override
+    public List<Map<String, Object>> getDeliveryByEId(DeliveryVo deliveryVo) throws MyException {
+        SimpleDateFormat formatter;
+        formatter = new SimpleDateFormat ("yyyy-MM-dd");
+
+
+        List<Map<String, Object>> rtv = new ArrayList<>();
+        List<Delivery> deliveries = deliveryMapper.selectByEId(deliveryVo);
+        if (deliveries.size() == 0) {
+            throw new MyException("查询失败");
+        } else {
+            for (Delivery delivery : deliveries) {
+                Map<String,Object> map = new HashMap<>(8);
+                map.put("systemId",delivery.getSystemId());
+                map.put("clientName",delivery.getClientName());
+                map.put("things",JsonUtil.getObjFromJson(delivery.getThings(), Product[].class));
+                map.put("start", formatter.format(delivery.getStart()));
+                map.put("end",formatter.format(delivery.getEnd()));
+                map.put("status",delivery.getStatus());
+                map.put("carNumber",delivery.getCarNumber());
+                map.put("eId",delivery.geteId());
+
+
+                List<Finance> finances = financeMapper.selectByCondition(delivery.getSystemId());
+                map.put("money",finances.get(0).getTotal());
+
+                rtv.add(map);
+            }
+        }
+
+
+        return rtv;
     }
 }

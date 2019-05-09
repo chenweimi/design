@@ -1,7 +1,6 @@
 package net.sanlao.design.core.model;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author : Jimi
@@ -17,7 +16,7 @@ public class Delivery {
     private Date end;
     private Integer status;
     private String carNumber;
-    private String employeeName;
+    private Integer eId;
 
     public Integer getSystemId() {
         return SystemId;
@@ -75,11 +74,11 @@ public class Delivery {
         this.carNumber = carNumber;
     }
 
-    public String getEmployeeName() {
-        return employeeName;
+    public Integer geteId() {
+        return eId;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public void seteId(Integer eId) {
+        this.eId = eId;
     }
 }

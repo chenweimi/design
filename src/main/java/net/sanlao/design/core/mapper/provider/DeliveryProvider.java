@@ -33,8 +33,8 @@ public class DeliveryProvider {
                 if(delivery.getCarNumber() != null) {
                     SET("car_number=#{carNumber}");
                 }
-                if(delivery.getEmployeeName() != null) {
-                    SET("e_name=#{employeeName}");
+                if(delivery.geteId() != null) {
+                    SET("e_id=#{eId}");
                 }
                 WHERE("d_id=#{systemId}");
 
@@ -46,7 +46,7 @@ public class DeliveryProvider {
         return new SQL() {
             {
                 SELECT("d_id AS systemId,client_name AS clientName,d_thing AS things,d_start AS start," +
-                        "d_end AS end,d_status AS status,car_number AS carNumber,e_name AS employeeName");
+                        "d_end AS end,d_status AS status,car_number AS carNumber,e_id AS eId");
                 FROM("delivery");
                 if (systemId != 0) {
                     WHERE("d_id=#{systemId}");
@@ -54,4 +54,18 @@ public class DeliveryProvider {
             }
         }.toString();
     }
+
+    public String selectByConditionByEId(DeliveryVo deliveryVo) {
+        return new SQL() {
+            {
+                SELECT("d_id AS systemId,client_name AS clientName,d_thing AS things,d_start AS start," +
+                        "d_end AS end,d_status AS status,car_number AS carNumber,e_id AS eId");
+                FROM("delivery");
+                WHERE("e_id=#{eId}");
+
+            }
+        }.toString();
+    }
+
+
 }

@@ -47,4 +47,10 @@ public interface DeliveryMapper {
     int deleteBySystemId(int systemId);
 
 
+    /**
+     * 筛选部分
+     * @return product的集合
+     */
+    @SelectProvider(type = DeliveryProvider.class, method = "selectByConditionByEId")
+    List<Delivery> selectByEId(DeliveryVo deliveryVo);
 }

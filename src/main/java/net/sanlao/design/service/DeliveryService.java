@@ -24,7 +24,7 @@ public interface DeliveryService {
     /**
      * 查询
      *
-     * @return 黑名单
+     * @return
      */
     List<Map<String, Object>> getDelivery(int systemId) throws MyException;
 
@@ -42,4 +42,11 @@ public interface DeliveryService {
      * @throws MyException
      */
     boolean deleteDelivery(int systemId) throws MyException;
+
+    /**
+     * 根据e_id来筛选
+     *
+     * @return
+     */
+    List<Map<String, Object>> getDeliveryByEId(DeliveryVo deliveryVo) throws MyException;
 }

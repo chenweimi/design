@@ -58,6 +58,19 @@ public class DeliveryAPI {
         }
     }
 
+    @RequestMapping(value = "/delivery", method = RequestMethod.GET)
+    public RestData getDeliveryByEId(DeliveryVo deliveryVo) {
+        logger.info("get getDeliveryByEId : " );
+
+        try {
+            List<Map<String, Object>> data = deliveryService.getDeliveryByEId(deliveryVo);
+            return new RestData(data);
+        } catch (MyException e) {
+            return new RestData(1, e.getMessage());
+        }
+    }
+
+
     @RequestMapping(value = "/delivery", method = RequestMethod.PUT)
     public RestData putDelivery(@RequestBody DeliveryVo deliveryVo) {
         logger.info("PUT putDelivery : ");

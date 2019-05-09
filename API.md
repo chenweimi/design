@@ -518,6 +518,7 @@
     "data" : true
 }
 ```
+---
 
 ### 删除配送
 
@@ -530,6 +531,68 @@
     "code" : 0,
     "data" : true
 }
+```
+
+---
+
+### 根据配送员筛选订单
+
+- GET /delivery?e_id=XX
+
+- return : 
+
+```json
+{
+    "code" : 0,
+    "data" :
+        [
+            {
+                "systemId" : 1,
+                "clientName" : "东北林业大学",
+                "things" : [
+                    {
+                    "id" : 1,
+                    "name" : "筷子",
+                    "count" : 100
+                    },
+                    {
+                    "id" : 2,
+                    "name" : "杯子",
+                    "count" : 200
+                    }
+                ],
+                "start" : "2019-10-10",
+                "end" : "2019-10-11",
+                "status" : 0,
+                "carNumber" : "运输车A",
+                "employeeName" : "张三",
+                "money" : 100
+            },
+            {
+               "systemId" : 2,
+               "clientName" : "东北林业大学",
+               "things" : [
+                   {
+                   "id" : 1,
+                   "name" : "筷子",
+                   "count" : 100
+                   },
+                   {
+                   "id" : 2,
+                   "name" : "杯子",
+                   "count" : 200
+                   }
+               ],
+               "start" : "2019-10-10",
+               "end" : "2019-10-11",
+               "status" : 0,
+               "carNumber" : "运输车A",
+               "employeeName" : "张三",
+               "money" : 100
+            }
+        ]
+}
+
 ```
 
 ---
